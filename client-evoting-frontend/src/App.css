@@ -1,0 +1,173 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#homepageBackgroud {
+  
+  width: 85vw;
+  filter: blur(5px);
+  
+}
+
+.filter-overlay {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255); 
+  opacity: 20%;/* Adjust the color and opacity as needed */
+}
+
+#imageOverlayText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#overlayText {
+  font-size: 150%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #FF6C22;
+}
+
+
+#logindiv {
+
+}
+
+#loginBox {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: 350px;
+  width: 500px;
+  border-radius: 6px;
+  border: 0.1px solid black;
+}
+
+
+#loginbar {
+  height: 50px; 
+  background-color: #0174BE;
+  border-radius: 6px;
+}
+
+
+#adminPannelNavbar {
+  width: 100%;
+  height: 60px;
+  background-color: #0174BE;
+}
+
+#navbartext {
+  font-size: 200%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 10px;
+  color: rgb(221, 221, 94);
+}
+
+#text {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 30px;
+  font-size: 200%;
+}
+
+#table {
+  width: 500px;
+  height: 40px;
+  border: 1px solid black;
+  margin-left: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabletext {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 10px; 
+  font-weight: 600;
+  color: #0174BE;
+}
+
+.addContainer {
+  
+}
+
+#votingbox  {
+  height: 200px;
+  width: 40%;
+  border: 0.5px solid black;
+  position: absolute; 
+  margin-top: 200px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 50px;
+}
+
+#emailbox {
+  height: 80px;
+  width: 45.5%;
+  border: 0.5px solid black;
+  position: absolute; 
+  margin-top: 520px;
+  border-radius: 20px;
+  background: linear-gradient(to right, #cf04cf, #0000ff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.emailtext {
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  margin: 15px;
+}
+
+.emailtext2 {
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  margin: 15px;
+}
+
+#votebox {
+  height: 80px;
+  width: 45.5%;
+  position: absolute; 
+  margin-top: 605px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
+
+.filltext {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#verifybox {
+  height: 80px;
+  width: 42%;
+  border: 0.5px solid black;
+  position: absolute; 
+  margin-top: 70px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 0 2%;
+
+}
+
+#partychoose {
+  position: absolute;
+  margin-left: 1200px;
+  border: 1px solid black;
+  height: 600px;
+  width: 400px;
+}

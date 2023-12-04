@@ -1,0 +1,41 @@
+#navbarContainer {
+    display: flex;
+    height: 70px;
+}
+
+
+
+#navLogoText {
+    border-right: 1px solid black;
+}
+
+#logoContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+#navText {
+    color: rgb(127, 85, 167);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    flex-grow: 1;
+    align-self: center;
+}
+
+#navTextAdjust {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#slidePannel {
+    position: fixed;
+    top: 0;
+    /* Use the right property for animation */
+    width: 400px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+  }
+  
+  
