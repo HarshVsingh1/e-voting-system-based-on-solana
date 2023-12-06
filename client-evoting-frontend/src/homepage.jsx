@@ -6,11 +6,58 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Alert, Snackbar } from '@mui/material';
+
+
 
 function Homepage() {
   const [uuid,setUuid] = useState('')
   const navigate =useNavigate()
+  const  [message,setMessage] = useState('')
+  const [open,setOpen] =useState(false);
+  
+  const checkuser = () => {
+    fetch(`https://backend-seven-ebon-40.vercel.app/voters/${uuid}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('User not found');
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        navigate('/voting/' + uuid);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+        openbox(error.message); // Display the error message
+      });
+  };
+    
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+  
+  const openbox = (message) => {
+    setMessage(message)
+    setOpen(true)
+     
+  }
+
     return <>
+    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                 <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                   {message}
+                 </Alert>
+               </Snackbar> 
+      <Navbar></Navbar>
       <Navbar></Navbar>
       <div  style={{display : "flex" , justifyContent : "center"}}>
         <div>
@@ -25,7 +72,7 @@ function Homepage() {
             </div>
             <div style={{marginTop : "30px"}}>
             <TextField onChange={(e) => {setUuid(e.target.value)}} id="outlined-basic" label="XXXX XXXX XXXX" variant="outlined" />
-            <Button  onClick={() => {navigate('/voting/' + uuid)}  }  sx={{width : "200px" , height : "55px" , marginLeft : "50px" , backgroundColor : "#FF6C22"}} variant="contained">Authenticate</Button>
+            <Button  onClick={() => {checkuser()}  }  sx={{width : "200px" , height : "55px" , marginLeft : "50px" , backgroundColor : "#FF6C22"}} variant="contained">Authenticate</Button>
             </div>
           </div>
       </div>
