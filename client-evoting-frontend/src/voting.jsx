@@ -175,6 +175,7 @@ function Votingpage() {
                         } else {
                           const data = await response.json();
                           console.log('Success:', data);
+                          setVotedone(false)
                           openbox("voted successfully")
                           
                         }

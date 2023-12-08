@@ -9,7 +9,7 @@ function Voteradd() {
     const [pincode,setPincode] = useState("")
     const [email,setEmail] = useState("")
     const [profilepic,setProfilepic] =useState("")
-     
+    const [message,setMessage] = useState("")
     const [open,setOpen] =useState(false);
     const token = sessionStorage.getItem("token")
     
@@ -18,6 +18,7 @@ function Voteradd() {
       }
       
       const voterCreated = (message) => {
+        setMessage(message)
         setOpen(true)
          
       }
@@ -27,7 +28,7 @@ function Voteradd() {
 
                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                   Voter Added successfully!
+                   {message}
                  </Alert>
                </Snackbar>
         <div  >
@@ -37,7 +38,7 @@ function Voteradd() {
             </div>
 
             <div  className="addContainer">
-                <div style={{marginLeft : "20px"}} >
+                <div className='text' style={{marginLeft : "20px"}} >
                     Uuid:
                 </div>
                 <div>
@@ -46,7 +47,7 @@ function Voteradd() {
             </div>
               <hr></hr>
             <div className="addContainer">
-                <div style={{marginLeft : "20px"}} >
+                <div className='text' style={{marginLeft : "20px"}} >
                     name:
                 </div>
                 <div>
@@ -55,7 +56,7 @@ function Voteradd() {
             </div>
             <hr></hr>
             <div className="addContainer">
-                <div style={{marginLeft : "20px"}} >
+                <div className='text' style={{marginLeft : "20px"}} >
                     Pincode:
                 </div>
                 <div>
@@ -64,7 +65,7 @@ function Voteradd() {
             </div>
             <hr></hr>
             <div className="addContainer">
-                <div style={{marginLeft : "20px"}} >
+                <div className='text' style={{marginLeft : "20px"}} >
                     email:
                 </div>
                 <div>
@@ -73,7 +74,7 @@ function Voteradd() {
             </div>
             <hr></hr>
             <div className="addContainer">
-                <div style={{marginLeft : "20px"}} >
+                <div className='text' style={{marginLeft : "20px"}} >
                   profile pic:
                 </div>
                 <div>

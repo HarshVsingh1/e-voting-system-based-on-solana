@@ -58,7 +58,6 @@ function Homepage() {
                  </Alert>
                </Snackbar> 
       <Navbar></Navbar>
-      <Navbar></Navbar>
       <div  style={{display : "flex" , justifyContent : "center"}}>
         <div>
 

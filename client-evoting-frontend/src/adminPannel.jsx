@@ -7,6 +7,7 @@ import Votes from './components/votes';
 import Parties from './components/parties';
 import Resets from './components/resets';
 import Partyvotes from './components/partyvotes';
+import Votehash from './components/votehash';
 
 function Adminpannel() {
    const [addParty , setAddpParty] = useState(false)
@@ -15,61 +16,77 @@ function Adminpannel() {
    const [parties,setParties] = useState(false)
    const [reset,setReset] = useState(false)
    const [partyvotes,setPartyvotes] = useState(false)
-    
-  const openAddParty = () => {
-    setReset(false)
-      setAddVoter(false)
+   const [hash,setHash] = useState(false)
+   const openAddParty = () => {
+     setReset(false)
+       setAddVoter(false)
+       setVotes(false)
+       setParties(false)
+       setPartyvotes(false)
+       setHash(false)
+       setAddpParty(true)
+   }
+ 
+   const openAddVoters = () => {
+     setReset(false)
+      setAddpParty(false)
       setVotes(false)
       setParties(false)
       setPartyvotes(false)
-      setAddpParty(true)
-  }
-
-  const openAddVoters = () => {
-    setReset(false)
+      setHash(false)
+       setAddVoter(true)
+   }
+ 
+   const openVotes =() => {
+        setReset(false)
+        setAddVoter(false)
+        setAddpParty(false)
+        setParties(false)
+        setPartyvotes(false)
+        setHash(false)
+     setVotes(true)
+   }
+ 
+   const openParties = () => {
+     setReset(false)
+     setAddVoter(false)
+     setAddpParty(false)
+     setVotes(false)
+     setPartyvotes(false)
+     setHash(false)
+     setParties(true)
+ 
+   }
+ 
+   const openReset = () => {
+     setAddVoter(false)
      setAddpParty(false)
      setVotes(false)
      setParties(false)
      setPartyvotes(false)
-      setAddVoter(true)
-  }
-
-  const openVotes =() => {
-       setReset(false)
-       setAddVoter(false)
-       setAddpParty(false)
-       setParties(false)
-       setPartyvotes(false)
-    setVotes(true)
-  }
-
-  const openParties = () => {
-    setReset(false)
-    setAddVoter(false)
-    setAddpParty(false)
-    setVotes(false)
-    setPartyvotes(false)
-    setParties(true)
-
-  }
-
-  const openReset = () => {
-    setAddVoter(false)
-    setAddpParty(false)
-    setVotes(false)
-    setParties(false)
-    setPartyvotes(false)
-    setReset(true)
-  }
-
-  const openPartyvotes = () => {
-    setAddVoter(false)
-    setAddpParty(false)
-    setVotes(false)
-    setParties(false)
-    setReset(false)
-    setPartyvotes(true)
-  }
+     setHash(false)
+     setReset(true)
+   }
+ 
+   const openPartyvotes = () => {
+     setAddVoter(false)
+     setAddpParty(false)
+     setVotes(false)
+     setParties(false)
+     setReset(false)
+     setHash(false)
+     setPartyvotes(true)
+   }
+ 
+   const openHash = () => {
+     setAddVoter(false)
+     setAddpParty(false)
+     setVotes(false)
+     setParties(false)
+     setReset(false)
+     setPartyvotes(false)
+     setHash(true)
+   }
 
   return <div>
     <div id='adminPannelNavbar' > 
@@ -78,11 +95,13 @@ function Adminpannel() {
 
   <div style={{display : "flex" , justifyContent : "space-between"}} >
 <div>
-    <div>
-    <div id='text' >
+
+<div id='text' >
       Site administration
     </div>
-    <div style={{backgroundColor : "#0174BE"}} id='table'>
+    <div style={{ boxShadow : "1px 1px 10px black"}} >
+   
+    <div style={{backgroundColor : "#023047"}} id='table'>
     </div>
     <div  id='table'>
       <div className='tabletext' >
@@ -144,13 +163,16 @@ function Adminpannel() {
       </div>
     </div>
 
+
+    
+
     </div>
 
 
 
 
-    <div style={{marginTop : "100px"}} >
-    <div style={{backgroundColor : "#0174BE"}} id='table'>
+    <div style={{marginTop : "100px" , boxShadow : "1px 1px 10px black"}} >
+    <div style={{backgroundColor : "#023047" }} id='table'>
     </div>
     <div  id='table'>
       <div className='tabletext' >
@@ -183,6 +205,22 @@ function Adminpannel() {
     </div>
 
 
+    <div id='table'>
+      <div className='tabletext' >
+        Votes hash
+      </div>
+
+      <div style={{display : "flex" , alignItems : "center" }}>
+        <div>
+        <AddIcon onClick={() => {openHash()}}  sx={{color : "#9ADE7B"}}></AddIcon> 
+        </div>
+         <div style={{padding : "0 17px"}}  className='tabletext' >
+        Add
+      </div>
+      </div>
+    </div>
+
+
 
     </div>
   </div>    
@@ -193,6 +231,7 @@ function Adminpannel() {
         {parties && <Parties></Parties>} 
         {reset && <Resets></Resets>}  
         {partyvotes  && <Partyvotes></Partyvotes>}
+        {hash && <Votehash></Votehash> }
         
  
         

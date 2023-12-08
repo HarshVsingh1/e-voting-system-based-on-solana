@@ -40,7 +40,7 @@ function Partyadd() {
             </div>
 
             <div  className="addContainer">
-                <div style={{marginLeft : "20px"}} >
+                <div className='text' style={{marginLeft : "20px"}} >
                     Party id:
                 </div>
                 <div>
@@ -49,7 +49,7 @@ function Partyadd() {
             </div>
               <hr></hr>
             <div className="addContainer">
-                <div style={{marginLeft : "20px"}} >
+                <div className='text' style={{marginLeft : "20px"}} >
                     Party name:
                 </div>
                 <div>
@@ -58,7 +58,7 @@ function Partyadd() {
             </div>
             <hr></hr>
             <div className="addContainer">
-                <div style={{marginLeft : "20px"}} >
+                <div className='text' style={{marginLeft : "20px"}} >
                     Party logo:
                 </div>
                 <div>
@@ -67,7 +67,7 @@ function Partyadd() {
             </div>
             <hr></hr>
             <div className="addContainer">
-                <div style={{marginLeft : "20px"}} >
+                <div className='text' style={{marginLeft : "20px"}} >
                     Candidate name:
                 </div>
                 <div>
