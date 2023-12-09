@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import Bar from "./bar";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Table, TableContainer, TableHead, TableRow } from "@mui/material";
+import { styled } from '@mui/material/styles';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import Paper from '@mui/material/Paper';
 
 
 
@@ -10,7 +14,25 @@ function Votes() {
     const token = sessionStorage.getItem("token")
     const [voters,setVoters]  = useState(null)
     
-   
+    const StyledTableCell = styled(TableCell)(({ theme }) => ({
+        [`&.${tableCellClasses.head}`]: {
+          backgroundColor: theme.palette.common.black,
+          color: theme.palette.common.white,
+        },
+        [`&.${tableCellClasses.body}`]: {
+          fontSize: 14,
+        },
+      }));
+      
+      const StyledTableRow = styled(TableRow)(({ theme }) => ({
+        '&:nth-of-type(odd)': {
+          backgroundColor: theme.palette.action.hover,
+        },
+        // hide last border
+        '&:last-child td, &:last-child th': {
+          border: 0,
+        },
+      }));
 
 
     useEffect(() => {
@@ -36,30 +58,41 @@ function Votes() {
     }
 
    return <div style={{width : "80%" , border : "1px solid black" , height : "570px" }} >
-
-             
-           <div style={{margin : "40px" , height : "500px" , overflow : "auto" } } >  
             
-           <Bar  
-              name  = "Name"
-              uuid = "Uuid"
-              pincode = "Pincode"
-              email= "Email"
-              profilepic="https://cdn2.iconfinder.com/data/icons/designers-and-developers-icon-set/32/image-512.png"
-              
-              ></Bar>
 
-           {voters.map(( voter) => (
-              <Bar  
-              name  = {voter.name}
-              uuid = {voter.uuid}
-              pincode = {voter.pincode}
-              email= {voter.email}
-              profilepic={voter.profilepic}
-              
-              ></Bar>
-           ))
-           }
+       <div style={{margin : "40px" , height : "500px" , overflow : "auto" } } >  
+            
+
+                <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell align="right">Uuid</StyledTableCell>
+            <StyledTableCell align="right">Pincode</StyledTableCell>
+            <StyledTableCell align="right">Email</StyledTableCell>
+            <StyledTableCell align="right"> <img style={{height : "40px",backgroundColor : "white"}} src="https://cdn2.iconfinder.com/data/icons/designers-and-developers-icon-set/32/image-512.png"></img></StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {voters.map((voter) => (
+            <StyledTableRow key={voter.name}>
+              <StyledTableCell component="th" scope="row">
+                {voter.name}
+              </StyledTableCell>
+              <StyledTableCell align="right">{voter.uuid}</StyledTableCell>
+              <StyledTableCell align="right">{voter.pincode}</StyledTableCell>
+              <StyledTableCell align="right">{voter.email}</StyledTableCell>
+              <StyledTableCell align="right">  <img style={{height : "40px"}} src={voter.profilepic} ></img></StyledTableCell>
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
+
+            
+             
              
             
                 
