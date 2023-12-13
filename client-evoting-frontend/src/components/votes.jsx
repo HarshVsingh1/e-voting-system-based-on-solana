@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
-
+import { useSpring, animated } from 'react-spring';
 
 
 
@@ -35,6 +35,18 @@ function Votes() {
       }));
 
 
+      const props = useSpring({
+        config: { 
+          mass: 1,
+          tension: 500, 
+          friction: 40,
+          duration: 1000 
+        },
+        opacity: 1,
+        from: { opacity: 0 },
+      })
+
+
     useEffect(() => {
         
         fetch("https://backend-seven-ebon-40.vercel.app/admin/voters",{
@@ -57,7 +69,7 @@ function Votes() {
           );
     }
 
-   return <div style={{width : "80%" , border : "1px solid black" , height : "570px" }} >
+   return  <animated.div style={props}><div style={{width : "100%" , border : "1px solid black" , height : "570px" }} >
             
 
        <div style={{margin : "40px" , height : "500px" , overflow : "auto" } } >  
@@ -97,7 +109,9 @@ function Votes() {
             
                 
            </div>
-   </div>
+   </div> 
+   </animated.div>
+   
 }
 
 export default Votes ;

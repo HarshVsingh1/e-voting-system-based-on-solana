@@ -2,6 +2,7 @@ import { Alert, Button, Snackbar, TextField } from '@mui/material';
 import './voteradduser.css'
 import { useState } from 'react';
 import logo from '../assets/logo.png'
+import { useSpring, animated } from 'react-spring';
 
 function Voteradduser({callback}) {
     
@@ -24,10 +25,13 @@ function Voteradduser({callback}) {
          
       }
     
-
+      const props = useSpring({
+        opacity: 1,
+        from: { opacity: 0 },
+      });
     
 
-    return <div style={{border : "1px solid black" , width : "80%" , borderRadius : "10px" }} >
+    return  <animated.div style={props}> <div style={{border : "1px solid black" , width : "80%" , borderRadius : "10px" }} >
 
                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
@@ -35,12 +39,22 @@ function Voteradduser({callback}) {
                  </Alert>
                </Snackbar>
         <div  >
-          <div style={{display : 'flex' , }} >
+          <div style={{display : 'flex' , maxHeight : "100px" }} >
 
             <div id="text" >
                 Register here
             </div>
             <img  style={{maxHeight : "50px" , marginTop : "20px"}} src={logo} alt='logo'></img> 
+            <div id='text2'>
+                 Already registered 
+            </div> 
+            <div>
+            <Button  sx={{ margin : "25px 5px"   , width : "150px" , height : "40px" , backgroundColor : "#023047" ,  }} onClick={() => {
+
+                 callback(true)
+                
+                }} variant="contained">Vote here</Button>
+            </div>
           </div>
 
             <div  className="addContainer">
@@ -146,6 +160,7 @@ voterCreated(result.message)
                  </div>
 
     </div>
+    </animated.div>
 }
 
 export default Voteradduser ;

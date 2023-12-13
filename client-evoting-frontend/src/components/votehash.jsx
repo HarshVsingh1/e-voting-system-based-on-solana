@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Bar from "./bar";
 import Hashbar from "./hashbar";
 import './votehash.css'
-
+import { useSpring, animated } from 'react-spring';
 import { Box, CircularProgress, Table, TableContainer, TableHead, TableRow } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import TableBody from '@mui/material/TableBody';
@@ -36,6 +36,19 @@ function Votehash() {
         },
       }));
 
+      const props = useSpring({
+        config: { 
+          mass: 1,
+          tension: 500, 
+          friction: 40,
+          duration: 1000 
+        },
+        opacity: 1,
+        from: { opacity: 0 },
+      })
+    
+    
+
     useEffect(() => {
         
         fetch("https://backend-seven-ebon-40.vercel.app/admin/hash",{
@@ -58,7 +71,7 @@ function Votehash() {
           );
     }
 
-   return <div style={{width : "80%" , border : "1px solid black" , height : "570px" }} >
+   return <animated.div style={props}>  <div style={{width : "100%" , border : "1px solid black" , height : "570px" }} >
 
              
            <div style={{margin : "40px" , height : "500px" , overflow : "auto" } } >  
@@ -90,6 +103,7 @@ function Votehash() {
                 
            </div>
    </div>
+   </animated.div>
 }
 
 export default Votehash ;

@@ -1,6 +1,7 @@
 import { Alert, Button, Snackbar, TextField } from '@mui/material';
 import './partyadd.css'
 import { useState } from 'react';
+import { useSpring, animated } from 'react-spring';
 
 function Partyadd() {
     
@@ -24,8 +25,16 @@ function Partyadd() {
          
       }
 
+      const props = useSpring({
+        config: { mass: 1, tension: 170, friction: 26 }, 
+        opacity: 1,
+        from: { opacity: 0 },
+      });
     
-    return <div style={{border : "1px solid black" , width : "80%"}} >
+
+    
+return    <animated.div style={props}>   
+     <div style={{border : "1px solid black" , width : "100%"}} >
 
 <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
@@ -118,6 +127,7 @@ function Partyadd() {
                  </div>
 
     </div>
+    </animated.div>
 }
 
 export default Partyadd ;

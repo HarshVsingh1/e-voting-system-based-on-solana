@@ -1,6 +1,8 @@
 import { Alert, Button, Snackbar, TextField } from '@mui/material';
 import './partyadd.css'
 import { useState } from 'react';
+import { useSpring, animated } from 'react-spring';
+
 
 function Voteradd() {
     
@@ -23,10 +25,14 @@ function Voteradd() {
          
       }
     
-
+      const props = useSpring({
+        opacity: 1,
+        from: { opacity: 0 },
+      });
     
 
-    return <div className="voter-add-animation" style={{border : "1px solid black" , width : "80%"}} >
+    return (   <animated.div style={props}> 
+     <div style={{border : "1px solid black" , width : "100%"}} >
 
                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
@@ -133,7 +139,7 @@ voterCreated(result.message)
                  }} sx={{margin : "10px"}} variant="contained">Save</Button>
                  </div>
 
-    </div>
-}
+    </div>  </animated.div>)
+} 
 
 export default Voteradd ;

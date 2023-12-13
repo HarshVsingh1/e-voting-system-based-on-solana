@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Bar from "./bar";
 import { Alert, Box, Button, CircularProgress, Snackbar } from "@mui/material";
 import './reset.css'
-
+import { useSpring, animated } from 'react-spring';
 
 
 function Resets() {
@@ -22,11 +22,17 @@ function Resets() {
       }
 
 
-  
+      const props = useSpring({
+        config: { mass: 1, tension: 170, friction: 26 }, 
+        opacity: 1,
+        from: { opacity: 0 },
+      });
+    
 
  
 
-   return <div style={{width : "80%" , border : "1px solid black" , height : "570px" }} >
+   return  <animated.div style={props}> 
+    <div style={{width : "100%" , border : "1px solid black" , height : "570px" }} >
                
 
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
@@ -138,7 +144,8 @@ function Resets() {
             
                 
            </div>
-   </div>
+   </div> 
+   </animated.div>
 }
 
 export default Resets ;

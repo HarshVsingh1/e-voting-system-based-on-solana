@@ -245,10 +245,12 @@ function Adminpannel() {
 
 
 
+
     </div>  
     
   </div> 
-  <div> {
+  <div style={{width : "100%"}} >
+  <div  > {
            image && 
            <div style={{height : "600px"}} >
            <img className='filter-overlay' id='homepageBackgroud' src={homepageBackground} ></img>
@@ -271,7 +273,7 @@ function Adminpannel() {
         {hash && <Votehash></Votehash> }
         
  
-        
+        </div> 
    </div>  
   </div>
 }
