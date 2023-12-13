@@ -1,0 +1,19 @@
+
+
+.addContainer {
+    height: 60px;
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+
+
+.text {
+    font-family: 'Roboto', sans-serif;
+}
+#text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 380;
+}

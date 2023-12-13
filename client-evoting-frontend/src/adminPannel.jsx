@@ -8,6 +8,11 @@ import Parties from './components/parties';
 import Resets from './components/resets';
 import Partyvotes from './components/partyvotes';
 import Votehash from './components/votehash';
+import homepageBackground from './assets/images/vote-bg.jpg'
+import { Button } from '@mui/material';
+import {  useNavigate } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
+
 
 function Adminpannel() {
    const [addParty , setAddpParty] = useState(false)
@@ -17,6 +22,10 @@ function Adminpannel() {
    const [reset,setReset] = useState(false)
    const [partyvotes,setPartyvotes] = useState(false)
    const [hash,setHash] = useState(false)
+   const [image,setImage] = useState(true)  
+
+   const navigate =useNavigate()
+ 
    const openAddParty = () => {
      setReset(false)
        setAddVoter(false)
@@ -24,6 +33,7 @@ function Adminpannel() {
        setParties(false)
        setPartyvotes(false)
        setHash(false)
+       setImage(false)
        setAddpParty(true)
    }
  
@@ -34,6 +44,7 @@ function Adminpannel() {
       setParties(false)
       setPartyvotes(false)
       setHash(false)
+      setImage(false)
        setAddVoter(true)
    }
  
@@ -44,6 +55,7 @@ function Adminpannel() {
         setParties(false)
         setPartyvotes(false)
         setHash(false)
+        setImage(false)
      setVotes(true)
    }
  
@@ -54,6 +66,7 @@ function Adminpannel() {
      setVotes(false)
      setPartyvotes(false)
      setHash(false)
+     setImage(false)
      setParties(true)
  
    }
@@ -65,6 +78,7 @@ function Adminpannel() {
      setParties(false)
      setPartyvotes(false)
      setHash(false)
+     setImage(false)
      setReset(true)
    }
  
@@ -75,6 +89,7 @@ function Adminpannel() {
      setParties(false)
      setReset(false)
      setHash(false)
+     setImage(false)
      setPartyvotes(true)
    }
  
@@ -85,12 +100,18 @@ function Adminpannel() {
      setParties(false)
      setReset(false)
      setPartyvotes(false)
+     setImage(false)
      setHash(true)
    }
 
+  
+
   return <div>
     <div id='adminPannelNavbar' > 
-           <div id='navbartext' >Administration</div>
+           <div id='navbartext' >Administration</div> 
+           <div>
+           <Button  onClick={() => { navigate('/');}  }  sx={{width : "120px" , height : "45px" , marginLeft : "50px" , backgroundColor : "black" , marginTop : "6px" , color : "white"}} variant="contained">Home</Button>
+           </div>
     </div> 
 
   <div style={{display : "flex" , justifyContent : "space-between"}} >
@@ -161,12 +182,14 @@ function Adminpannel() {
         check
       </div>
       </div>
-    </div>
+    </div> 
+
+    
 
 
     
 
-    </div>
+    </div>  
 
 
 
@@ -222,10 +245,24 @@ function Adminpannel() {
 
 
 
-    </div>
-  </div>    
-         
-        {addParty && <Partyadd></Partyadd>}  
+    </div>  
+    
+  </div> 
+  <div> {
+           image && 
+           <div style={{height : "600px"}} >
+           <img className='filter-overlay' id='homepageBackgroud' src={homepageBackground} ></img>
+            <div id='overlayTextadmin' >
+              WELCOME ADMIN
+            </div> 
+            </div>  
+        }
+      
+
+       </div>   
+
+      
+        {addParty &&<Partyadd></Partyadd>} 
         {addVoter && <Voteradd></Voteradd>}
         {votes && <Votes></Votes>}   
         {parties && <Parties></Parties>} 

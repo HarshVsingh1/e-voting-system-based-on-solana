@@ -26,3 +26,25 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 380;
 }
+
+
+.voter-add-animation-enter {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  .voter-add-animation-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 300ms, transform 300ms; 
+  }
+  
+  .voter-add-animation-exit {
+    opacity: 1;  
+    transform: scale(1);
+  }
+  
+  .voter-add-animation-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+  }

@@ -76,7 +76,7 @@ function Votes() {
         </TableHead>
         <TableBody>
           {voters.map((voter) => (
-            <StyledTableRow key={voter.name}>
+            <StyledTableRow key={voter.uuid}>
               <StyledTableCell component="th" scope="row">
                 {voter.name}
               </StyledTableCell>

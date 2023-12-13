@@ -2,6 +2,7 @@ import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 
 
+
 function Adminlogin() {
 
   const [username, setUsername] = useState('');
@@ -12,7 +13,7 @@ function Adminlogin() {
      <div id='loginBox' >
             <div id="loginbar" >
               <div style={{display : "flex" , justifyContent : "center" , alignItems : "center" , height  : "100%"}} >
-                <span style={{fontFamily : "fantasy" , fontSize : "130%"}} >
+                <span style={{fontFamily : "fantasy" , fontSize : "130%" , color : "white"}} >
 
                  Administration
                 </span>
@@ -35,7 +36,7 @@ function Adminlogin() {
 
 
             <div style={{display : "flex" , flexDirection : "column", marginTop : "30px" , margin : "30px 20px" }} >
-                 <Button onClick={() => {
+                 <Button sx={{ backgroundColor : "#023047"}} onClick={() => {
                   
                   if(!username && password){
                     setForm("Please fill the username password ")

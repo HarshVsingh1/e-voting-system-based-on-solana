@@ -22,9 +22,11 @@ function Voteradd() {
         setOpen(true)
          
       }
+    
 
+    
 
-    return <div style={{border : "1px solid black" , width : "80%"}} >
+    return <div className="voter-add-animation" style={{border : "1px solid black" , width : "80%"}} >
 
                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
@@ -87,27 +89,43 @@ function Voteradd() {
                  
                  <div id='saveBar' >
                  
-                 <Button  onClick={() => {
+                 <Button  onClick={ async() => {  
+                         
+                         const response = await fetch("https://api.postalpincode.in/pincode/" + pincode , {
+                            method : "GET" 
+                        })
+                
+                        const data = await response.json() 
+                        console.log(data)
+                        console.log(data[0].Status)
+                          
 
-    fetch("https://backend-seven-ebon-40.vercel.app/admin/voter",{
-    method : "POST" ,
-    body: JSON.stringify({
-        "uuid" : uuid,
-        "name" : name,
-        "pincode" : pincode,
-        "email" : email ,
-        "profilepic" : profilepic,
-        "vote" : false
+                    if(data[0].Status === 'Success') {
+                        fetch("https://backend-seven-ebon-40.vercel.app/admin/voter",{
+                            method : "POST" ,
+                            body: JSON.stringify({
+                                "uuid" : uuid,
+                                "name" : name,
+                                "pincode" : pincode,
+                                "email" : email ,
+                                "profilepic" : profilepic,
+                                "vote" : false
+                        
+                            }),
+                            headers : {
+                                "content-type" : "application/json",
+                                authorization : token
+                              }
+                        }).then((response) => { return response.json()}).then((data) => {
+                            voterCreated(data.message)
+                        })
+                        
+                    }
+                    else {
+                        voterCreated("Wrong pincode")
+                    }
 
-    }),
-    headers : {
-        "content-type" : "application/json",
-        authorization : token
-      }
-}).then((response) => { return response.json()}).then((data) => {
-    voterCreated(data.message)
-})
-
+    
 
 
 voterCreated(result.message)
