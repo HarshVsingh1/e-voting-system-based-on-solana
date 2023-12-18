@@ -109,7 +109,7 @@ function Votingpage() {
                               </div>
                   </div>
                   <div>
-                      <img style={{height : "150px" , borderRadius : "20px" , boxShadow : "2px 2px 10px black"}} src='http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2016/11/Narendra-Modi-10-1.jpg' ></img>
+                      <img style={{height : "150px" , borderRadius : "20px" , boxShadow : "2px 2px 10px black"}} src={user.profilepic} ></img>
                   </div>
    </div> 
        
